@@ -1,2 +1,2 @@
-# nixos-configuration
-My NixOS configuration(s) 
+# homelab
+My NixOS configuration(s) + various dotfiles
