@@ -53,4 +53,4 @@ pkgs.writeShellApplication {
 
     sudo unmount -R /mnt
   '';
-};
+}

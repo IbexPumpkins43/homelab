@@ -68,6 +68,7 @@
  
       apps.x86_64-linux.homelab-install = {
         type = "app";
+        meta = "Install a homelab host";
         program = "${homelabInstall}/bin/homelab-install";
       };
 
