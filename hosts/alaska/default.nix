@@ -153,17 +153,16 @@
           pcmanfm
           qbittorrent
           ripgrep
+          tree
           vlc
           vscodium
 
           # C/C++ development
-          clang
           clang-tools
           cmake
           gcc
           gdb
           gnumake
-          lldb
           pkg-config
           valgrind
           
@@ -181,6 +180,11 @@
           python3
           ruff
           pyright
+
+          # Ada development
+          alire
+          gnat
+          gprbuild
         ];
 
         stateVersion = "26.05";

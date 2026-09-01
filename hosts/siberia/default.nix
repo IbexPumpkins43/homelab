@@ -12,6 +12,7 @@
   };
 
   boot.kernelParams = [
+    # Without this the Wi-Fi card spams error messages, filling up the disk
     "pci=noaer"
   ];
 
@@ -30,7 +31,16 @@
   networking = {
     hostName = "siberia";
     networkmanager.enable = true;
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+
+      # Open ports for Minecraft servers
+      allowedTCPPorts = [
+        25565
+        25566
+        25567
+      ];
+    };
   };
 
   # Remote administration
@@ -134,6 +144,7 @@
           eza
           fzf
           ripgrep
+          tree
 
           # 6thSonOfSony dependencies
           deno

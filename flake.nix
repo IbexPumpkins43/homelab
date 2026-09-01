@@ -54,16 +54,16 @@
           host = "siberia";
         };
   
-        # RPI 4B 8G
-        salmonberry = makeSystem {
-          system = "aarch64-linux";
-          host = "salmonberry";
-        };
+        # RPI 4B 8G (TODO)
+        # salmonberry = makeSystem {
+        #  system = "aarch64-linux";
+        #  host = "salmonberry";
+        # };
       };
   
       formatter = {
         x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-        aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
+        # aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
       };
     };
 }
