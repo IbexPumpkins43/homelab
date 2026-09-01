@@ -109,6 +109,8 @@
     serviceConfig = {
       Type = "oneshot";
       User = "permafrost";
+      Restart = "on-failure";
+      RestartSec = "15s";
     };
 
     script = ''
