@@ -7,16 +7,29 @@
 
   # Bootloader
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      editor = false;
+      configurationLimit = 10;
+    };
+
     efi.canTouchEfiVariables = true;
   };
 
-  # Nix
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  # Nix features and garbage collector
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
  
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

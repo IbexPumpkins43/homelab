@@ -6,22 +6,37 @@
   ];
 
   # Bootloader
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        editor = false;
+        configurationLimit = 10;
+      };
+      
+      efi.canTouchEfiVariables = true;
+    };
+
+    kernelParams = [
+      # Without this the Wi-Fi card spams error messages, filling up the disk
+      "pci=noaer"
+    ];
   };
 
-  boot.kernelParams = [
-    # Without this the Wi-Fi card spams error messages, filling up the disk
-    "pci=noaer"
-  ];
-
-  # Nix
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  # Nix features and garbage collector
+  nix = { 
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
  
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
+
   # Timezone, locale, and keyboard
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
