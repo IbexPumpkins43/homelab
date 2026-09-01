@@ -25,12 +25,10 @@ pkgs.writeShellApplication {
 
     case "$host" in
       alaska)
-        disk="/dev/disk/by-id/nvme-CT1000P3SSD8_24294A05B115"
         user="ptarmigan"
         ;;
 
       siberia)
-        disk="/dev/disk/by-id/ata-CT480BX500SSD1_2133E5C3EE93"
         user="permafrost"
         ;;
 
