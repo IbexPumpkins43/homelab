@@ -196,7 +196,7 @@
 
           # Ada development
           alire
-          gnat
+          (lib.lowPrio gnat)
           gprbuild
         ];
 
