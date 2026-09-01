@@ -11,6 +11,10 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.kernelParams = [
+    "pci=noaer"
+  ];
+
   # Nix
   nix.settings.experimental-features = [
     "nix-command"
