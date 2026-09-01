@@ -21,17 +21,17 @@ pkgs.writeShellApplication {
       exit 1
     fi
 
-    host = "$1"
+    host="$1"
 
     case "$host" in
       alaska)
-        disk = "/dev/disk/by-id/nvme-CT1000P3SSD8_24294A05B115"
-        user = "ptarmigan"
+        disk="/dev/disk/by-id/nvme-CT1000P3SSD8_24294A05B115"
+        user="ptarmigan"
         ;;
 
       siberia)
-        disk = "/dev/disk/by-id/ata-CT480BX500SSD1_2133E5C3EE93"
-        user = "permafrost"
+        disk="/dev/disk/by-id/ata-CT480BX500SSD1_2133E5C3EE93"
+        user="permafrost"
         ;;
 
       *)
@@ -54,6 +54,6 @@ pkgs.writeShellApplication {
 
     sudo nixos-enter --root /mnt -c "passwd $user"
 
-    sudo unmount -R /mnt
+    sudo umount -R /mnt
   '';
 }
