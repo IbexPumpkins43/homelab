@@ -178,7 +178,7 @@
 
           # Always share 1 tmux session
           interactiveShellInit = ''
-            if test -n "$SSH_TTY"; and test -z "$TMUX"
+            if not set -q TMUX
               exec tmux new-session -A -s siberia
             end
           '';
