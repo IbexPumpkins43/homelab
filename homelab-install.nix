@@ -40,20 +40,37 @@ pkgs.writeShellApplication {
         ;;
     esac
 
+    # Ensure flake is ok to use
     nix flake check ${self}
 
-    sudo disko-install \
+    # Prep disks
+    sudo disko \
+      --mode destroy,format,mount \
+      --flake ${self}#"$host"
+
+    # Use the host system swapfile
+    sudo fallocate -l 8G /mnt/swapfile
+    sudo chmod 600 /mnt/swapfile
+    sudo mkswap /mnt/swapfile
+    sudo swapon /mnt/swapfile
+
+    # Copy network configs
+    sudo mkdir -p /mnt/etc/NetworkManager/system-connections
+    sudo cp -a \
+      /etc/NetworkManager/system-connections/. \
+      /mnt/etc/NetworkManager/system-connections/
+
+    # Install the OS onto the host
+    nixos-install \
       --flake ${self}#"$host" \
-      --disk main "$disk" \
-      --extra-files \
-        /etc/NetworkManager/system-connections \
-        etc/NetworkManager/system-connections \
-      --write-efi-boot-entries
+      --no-root-password
 
+    # Set the user password
     sudo disko --mode mount --flake ${self}#"$host"
-
     sudo nixos-enter --root /mnt -c "passwd $user"
 
+    # Cleanup
+    sudo swapoff /mnt/swapfile
     sudo umount -R /mnt
   '';
 }
