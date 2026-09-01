@@ -41,7 +41,7 @@ pkgs.writeShellApplication {
     esac
 
     # Ensure flake is ok to use
-    nix flake check ${self}
+    nix flake check --no-build ${self}
 
     # Prep disks
     sudo disko \
@@ -61,12 +61,11 @@ pkgs.writeShellApplication {
       /mnt/etc/NetworkManager/system-connections/
 
     # Install the OS onto the host
-    nixos-install \
+    sudo nixos-install \
       --flake ${self}#"$host" \
       --no-root-password
 
     # Set the user password
-    sudo disko --mode mount --flake ${self}#"$host"
     sudo nixos-enter --root /mnt -c "passwd $user"
 
     # Cleanup
