@@ -43,8 +43,11 @@ pkgs.writeShellApplication {
     nix flake check ${self}
 
     sudo disko-install \
-      --flake ${self}#"$host"
-      --disk main "$disk"
+      --flake ${self}#"$host" \
+      --disk main "$disk" \
+      --extra-files \
+        /etc/NetworkManager/system-connections \
+        etc/NetworkManager/system-connections \
       --write-efi-boot-entries
 
     sudo disko --mode mount --flake ${self}#"$host"
