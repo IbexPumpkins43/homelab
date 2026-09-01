@@ -154,6 +154,33 @@
           qbittorrent
           ripgrep
           vlc
+          vscodium
+
+          # C/C++ development
+          clang
+          clang-tools
+          cmake
+          gcc
+          gdb
+          gnumake
+          lldb
+          pkg-config
+          valgrind
+          
+          # C# development
+          dotnetCorePackages.sdk_10_0
+
+          # Rust development
+          rustc
+          cargo
+          clippy
+          rustfmt
+          rust-analyzer
+
+          # Python development
+          python3
+          ruff
+          pyright
         ];
 
         stateVersion = "26.05";
