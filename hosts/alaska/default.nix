@@ -196,8 +196,6 @@
 
           # Ada development
           alire
-          (lib.lowPrio gnat)
-          gprbuild
         ];
 
         stateVersion = "26.05";
