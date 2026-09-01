@@ -41,7 +41,7 @@
         };
     in
     {
-      nixosConfiguration = {
+      nixosConfigurations = {
         # Laptop
         alaska = makeSystem {
           system = "x86_64-linux";
