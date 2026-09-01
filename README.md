@@ -12,17 +12,7 @@ cd homelab
 
 export NIX_CONFIG="experimental-features = nix-command flakes"
 
-nix flake check
-
-nix run \
-  github:nix-community/disko#disko-install -- \
-  --flake '.#flake-of-choice' \
-  --disk main disk-of-choice \
-  --write-efi-boot-entries 
-
-nixos-enter --root /mnt -c 'passwd user-of-choice'
-
-umount -R /mnt
+nix run .#installer -- host-of-your-choice
 
 reboot
 ```

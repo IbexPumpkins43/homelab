@@ -39,6 +39,11 @@
             ./hosts/${host}
           ];
         };
+
+      homelabInstall = import ./homelab-install.nix {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        inherit self disko;
+      };
     in
     {
       nixosConfigurations = {
@@ -60,7 +65,12 @@
         #  host = "salmonberry";
         # };
       };
-  
+ 
+      apps.x86_64-linux.homelab-install = {
+        type = "app";
+        program = "${homelabInstall}/bin/homelab-install";
+      };
+
       formatter = {
         x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
         # aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
