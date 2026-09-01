@@ -193,9 +193,6 @@
           python3
           ruff
           pyright
-
-          # Ada development
-          alire
         ];
 
         stateVersion = "26.05";
