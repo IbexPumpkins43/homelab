@@ -1,5 +1,5 @@
 # homelab
-My NixOS configuration(s) + various dotfiles
+My NixOS-based homelab configurations
 
 # install
 ```
