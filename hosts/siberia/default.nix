@@ -1,46 +1,15 @@
 { pkgs, ... }:
 {
   imports = [
+    ../common.nix
     ./hardware-configuration.nix
     ./disk-configuration.nix
   ];
 
-  # Bootloader
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        editor = false;
-        configurationLimit = 10;
-      };
-      
-      efi.canTouchEfiVariables = true;
-    };
-
-    kernelParams = [
-      # Without this the Wi-Fi card spams error messages, filling up the disk
+  # Without this the Wi-Fi card spams error messages, filling up the disk
+  boot.kernelParams = [
       "pci=noaer"
-    ];
-  };
-
-  # Nix features and garbage collector
-  nix = { 
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
- 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
-  };
-
-  # Timezone, locale, and keyboard
-  time.timeZone = "Europe/London";
-  i18n.defaultLocale = "en_GB.UTF-8";
-  console.keyMap = "uk";
+  ];
 
   # Hostname and network management
   networking = {
@@ -63,20 +32,6 @@
     enable = true;
     openFirewall = true;
   };
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    htop
-    pciutils
-    usbutils
-    vim
-    wget
-  ];
- 
-  # System packages that have integration
-  programs.fish.enable = true;
 
   # User
   users.users.permafrost = {
@@ -151,83 +106,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     
-    users.permafrost = {
-      home = {
-        username = "permafrost";
-        homeDirectory = "/home/permafrost";  
-        
-        packages = with pkgs; [
-          bat
-          eza
-          fzf
-          ripgrep
-          tree
-
-          # 6thSonOfSony dependencies
-          deno
-          ffmpeg
-          python3
-          uv
-        ];
-
-        stateVersion = "26.05";
-      };
-
-      programs = {
-        # Fish config
-        fish = {
-          enable = true;
-
-          # Always share 1 tmux session
-          interactiveShellInit = ''
-            if not set -q TMUX
-              exec tmux new-session -A -s siberia
-            end
-          '';
-
-          shellAliases = {
-            cat = "bat";
-            ls = "eza";
-            ll = "eza -lh";
-            la = "eza -lah";
-
-            # 6thSonOfSony aliases
-            ssos = ''
-              cd ~/6thSonOfSony/ && \
-              uv run sixth-son-of-sony
-            '';
-            ssospot = ''
-              cd ~/bgutil-ytdlp-pot-provider/server/node_modules && \
-              deno run \
-                --allow-env \
-                --allow-net \
-                --allow-ffi=. \
-                --allow-read=. \
-                ../src/main.ts
-            '';
-
-            # Minecraft aliases
-            java8 = "${pkgs.jdk8_headless}/bin/java";
-            java25 = "${pkgs.jdk25_headless}/bin/java";
-          };
-        };
-
-        # Tmux config
-        tmux = {
-          enable = true;
-
-          mouse = true;
-          baseIndex = 1;
-          escapeTime = 0;
-          historyLimit = 10000;
-
-          extraConfig = ''
-            set -g status-style "bg=blue,fg=black"
-          '';
-        };
-      };
-    };
+    users.permafrost = import ./home.nix;
   };
-
-  system.stateVersion = "26.05";
 }
