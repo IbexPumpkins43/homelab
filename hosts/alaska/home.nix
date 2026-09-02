@@ -1,3 +1,8 @@
+{ pkgs, ... }:
+let
+  fontFamily = "JetBrainsMono Nerd Font";
+  fontFamilySize = 10.0;
+in
 {
   home = {
     username = "ptarmigan";
@@ -58,8 +63,8 @@
         };
         
         font = {
-          normal.family = "JetBrainsMono Nerd Font";
-          size = 10.0;
+          normal.family = fontFamily;
+          size = fontFamilySize;
         };
 
         colors = {
@@ -144,18 +149,18 @@
         terminal = "alacritty";
 
         fonts = {
-          names = [ "JetBrainsMono Nerd Font" ];
-          size = 10.0;
+          names = [ fontFamily ];
+          size = fontFamilySize;
           style = "Regular";
         };
 
         bars = [
           {
-            position = "bottom";
+            position = "top";
       
             fonts = {
-              names = [ "JetBrainsMono Nerd Font" ];
-              size = 10.0;
+              names = [ fontFamily ];
+              size = fontFamilySize;
               style = "Regular";
             };
 
