@@ -154,6 +154,9 @@ in
           style = "Regular";
         };
 
+        window.border = 1;
+        floating.border = 1;
+
         bars = [
           {
             position = "top";
