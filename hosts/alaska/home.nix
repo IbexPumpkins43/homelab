@@ -157,8 +157,15 @@ in
 
         menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${toString fontFamilySize}'";
 
-        window.border = 1;
-        floating.border = 1;
+        window = {
+          border = 1;
+          titlebar = false;
+        };
+
+        floating = {
+          border = 1;
+          titlebar = false;
+        };
 
         bars = [
           {
