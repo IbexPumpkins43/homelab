@@ -158,12 +158,12 @@ in
         menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${toString fontFamilySize}'";
 
         window = {
-          border = 1;
+          border = 2;
           titlebar = false;
         };
 
         floating = {
-          border = 1;
+          border = 2;
           titlebar = false;
         };
 
