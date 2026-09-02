@@ -14,7 +14,8 @@ in
       feh
       fooyin
       fzf
-      pcmanfm
+      pavucontrol
+      pcmanfm-qt
       qbittorrent
       ripgrep
       tree
@@ -154,6 +155,8 @@ in
           style = "Regular";
         };
 
+        menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${fontFamilySize}'";
+
         window.border = 1;
         floating.border = 1;
 
@@ -184,11 +187,17 @@ in
     };
 
     # Notifications service
-    dunst.enable = true;
+    dunst = {
+      enable = true;
+      settings.global.font = "${fontFamily} ${fontFamilySize}";
+    };
+
     # Compositor
     picom.enable = true;
     # Drive management service
     udiskie.enable = true;
+    # PulseAudio/PipeWire applet
+    pasystray.enable = true;
   };
 
   # Polkit service
