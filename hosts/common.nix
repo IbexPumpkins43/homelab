@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   # Bootloader
   boot.loader = {
