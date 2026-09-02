@@ -155,7 +155,7 @@ in
           style = "Regular";
         };
 
-        menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${fontFamilySize}'";
+        menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${toString fontFamilySize}'";
 
         window.border = 1;
         floating.border = 1;
@@ -189,7 +189,7 @@ in
     # Notifications service
     dunst = {
       enable = true;
-      settings.global.font = "${fontFamily} ${fontFamilySize}";
+      settings.global.font = "${fontFamily} ${toString fontFamilySize}";
     };
 
     # Compositor
