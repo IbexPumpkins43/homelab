@@ -7,7 +7,7 @@ in
   home = {
     username = "ptarmigan";
     homeDirectory = "/home/ptarmigan";  
-    
+   
     packages = with pkgs; [
       bat
       eza
@@ -186,6 +186,14 @@ in
   };
 
   services = {
+    # Home Manager cleanup
+    home-manager.autoExpire = {
+      enable = true;
+      frequency = "weekly";
+      timestamp = "-7 days";
+      store.cleanup = true;
+    };
+
     # Screen locking service
     screen-locker = {
       enable = true;

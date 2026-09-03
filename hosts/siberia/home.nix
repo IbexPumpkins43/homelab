@@ -3,7 +3,7 @@
   home = {
     username = "permafrost";
     homeDirectory = "/home/permafrost";  
-    
+
     packages = with pkgs; [
       bat
       eza
@@ -73,5 +73,13 @@
         set -g status-style "bg=blue,fg=black"
       '';
     };
+  };
+
+  # Home Manager cleanup
+  services.home-manager.autoExpire = {
+    enable = true;
+    frequency = "weekly";
+    timestamp = "-7 days";
+    store.cleanup = true;
   };
 }
