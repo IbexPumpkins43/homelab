@@ -16,11 +16,11 @@ in
       fzf
       pavucontrol
       pcmanfm-qt
+      prismlauncher
       qbittorrent
       ripgrep
       tree
       vlc
-      vscodium
 
       # C/C++ development
       clang-tools
