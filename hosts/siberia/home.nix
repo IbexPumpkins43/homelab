@@ -13,7 +13,7 @@
 
       # dukebox dependencies
       deno
-      ffmpeg
+      ffmpeg-full
       python3
       uv
     ];
