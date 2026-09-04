@@ -44,45 +44,6 @@
     ];
   };
 
-  # Application setup
-  systemd.services.siberia-setup = {
-    description = "Set up Siberia applications";
-
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    unitConfig.ConditionPathExists = "!/home/permafrost/.siberia-setup-complete";
-
-    path = with pkgs; [
-      git
-    ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      User = "permafrost";
-      Restart = "on-failure";
-      RestartSec = "15s";
-    };
-
-    script = ''
-      set -e
-
-      # Discord bot 
-      if [ ! -d /home/permafrost/dukebox/.git ]; then
-        git clone \
-          https://github.com/IbexPumpkins43/dukebox \
-          /home/permafrost/dukebox
-      fi 
-       
-      cd /home/permafrost/dukebox
-      nix develop --command cargo build --release
-
-      # Completed setup marker
-      touch /home/permafrost/.siberia-setup-complete
-    '';
-  };
-
   # User environment
   home-manager = {
     useGlobalPkgs = true;

@@ -36,8 +36,7 @@
         # dukebox aliases
         dukebox = ''
           cd ~/dukebox/ && \
-          nix develop && \
-          cargo run --release
+          nix develop --command cargo run --release
         '';
 
         # Minecraft aliases
