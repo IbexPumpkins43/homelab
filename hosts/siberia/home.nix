@@ -10,12 +10,6 @@
       fzf
       ripgrep
       tree
-
-      # dukebox dependencies
-      deno
-      ffmpeg-full
-      python3
-      uv
     ];
 
     stateVersion = "26.05";
@@ -42,16 +36,8 @@
         # dukebox aliases
         dukebox = ''
           cd ~/dukebox/ && \
-          uv run dukebox
-        '';
-        dukeboxpot = ''
-          cd ~/bgutil-ytdlp-pot-provider/server/node_modules && \
-          deno run \
-            --allow-env \
-            --allow-net \
-            --allow-ffi=. \
-            --allow-read=. \
-            ../src/main.ts
+          nix develop && \
+          cargo run --release
         '';
 
         # Minecraft aliases

@@ -16,14 +16,14 @@
     hostName = "siberia";
     networkmanager.enable = true;
     firewall = {
-      enable = false;
+      enable = true;
 
       # Open ports for Minecraft servers
-      # allowedTCPPorts = [
-      #  25565
-      #  25566
-      #  25567
-      #];
+      allowedTCPPorts = [
+        25565
+        25566
+        25567
+      ];
     };
   };
 
@@ -55,10 +55,7 @@
     unitConfig.ConditionPathExists = "!/home/permafrost/.siberia-setup-complete";
 
     path = with pkgs; [
-      deno
       git
-      python3
-      uv
     ];
 
     serviceConfig = {
@@ -79,22 +76,7 @@
       fi 
        
       cd /home/permafrost/dukebox
-      uv sync
-
-      # yt-dlp POT provider
-      if [ ! -d /home/permafrost/bgutil-ytdlp-pot-provider/.git ]; then
-        git clone \
-          --single-branch \
-          --branch 1.3.2 \
-          https://github.com/Brainicism/bgutil-ytdlp-pot-provider \
-          /home/permafrost/bgutil-ytdlp-pot-provider/
-      fi      
-
-      cd /home/permafrost/bgutil-ytdlp-pot-provider/server
-      deno install --allow-scripts=npm:canvas --frozen
-
-      # Minecraft servers
-      mkdir -p /home/permafrost/MinecraftServers
+      nix develop --command cargo build --release
 
       # Completed setup marker
       touch /home/permafrost/.siberia-setup-complete
