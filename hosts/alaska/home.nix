@@ -15,7 +15,6 @@ in
       fooyin
       fzf
       pavucontrol
-      pcmanfm-qt
       prismlauncher
       qbittorrent
       ripgrep
@@ -44,7 +43,7 @@ in
       # Python development
       python3
       ruff
-      pyright
+      pyrefly
     ];
 
     stateVersion = "26.05";
