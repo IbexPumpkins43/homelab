@@ -11,7 +11,7 @@
       ripgrep
       tree
 
-      # 6thSonOfSony dependencies
+      # dukebox dependencies
       deno
       ffmpeg
       python3
@@ -39,12 +39,12 @@
         ll = "eza -lh";
         la = "eza -lah";
 
-        # 6thSonOfSony aliases
-        ssos = ''
-          cd ~/6thSonOfSony/ && \
-          uv run sixth-son-of-sony
+        # dukebox aliases
+        dukebox = ''
+          cd ~/dukebox/ && \
+          uv run dukebox
         '';
-        ssospot = ''
+        dukeboxpot = ''
           cd ~/bgutil-ytdlp-pot-provider/server/node_modules && \
           deno run \
             --allow-env \
