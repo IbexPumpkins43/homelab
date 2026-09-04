@@ -16,14 +16,14 @@
     hostName = "siberia";
     networkmanager.enable = true;
     firewall = {
-      enable = true;
+      enable = false;
 
       # Open ports for Minecraft servers
-      allowedTCPPorts = [
-        25565
-        25566
-        25567
-      ];
+      # allowedTCPPorts = [
+      #  25565
+      #  25566
+      #  25567
+      #];
     };
   };
 
