@@ -72,13 +72,13 @@
       set -e
 
       # Discord bot 
-      if [ ! -d /home/permafrost/6thSonOfSony/.git ]; then
+      if [ ! -d /home/permafrost/dukebox/.git ]; then
         git clone \
-          https://github.com/IbexPumpkins43/6thSonOfSony \
-          /home/permafrost/6thSonOfSony
+          https://github.com/IbexPumpkins43/dukebox \
+          /home/permafrost/dukebox
       fi 
        
-      cd /home/permafrost/6thSonOfSony
+      cd /home/permafrost/dukebox
       uv sync
 
       # yt-dlp POT provider
