@@ -5,6 +5,7 @@
     homeDirectory = "/home/permafrost";  
 
     packages = with pkgs; [
+      # Utilities
       bat
       eza
       fzf
