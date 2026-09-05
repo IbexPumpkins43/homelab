@@ -10,6 +10,8 @@
       fzf
       ripgrep
       tree
+      unzip
+      zip
     ];
 
     stateVersion = "26.05";

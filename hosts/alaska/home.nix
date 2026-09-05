@@ -9,17 +9,23 @@ in
     homeDirectory = "/home/ptarmigan";  
    
     packages = with pkgs; [
+      # Utilities
       bat
       eza
       feh
       fooyin
       fzf
       pavucontrol
-      prismlauncher
       qbittorrent
       ripgrep
       tree
+      unzip
       vlc
+      zip
+
+      # Games
+      prismlauncher
+      vintagestory
 
       # C/C++ development
       clang-tools
