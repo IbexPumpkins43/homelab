@@ -50,6 +50,10 @@ in
       python3
       ruff
       pyrefly
+
+      # Zig development
+      zig
+      zls
     ];
 
     stateVersion = "26.05";
