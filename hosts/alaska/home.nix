@@ -21,6 +21,7 @@ in
       tree
       unzip
       vlc
+      vscodium
       zip
 
       # Games
