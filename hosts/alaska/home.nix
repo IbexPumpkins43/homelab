@@ -21,7 +21,7 @@ in
       tree
       unzip
       vlc
-      vscodium
+      vscodium.fhs
       zip
 
       # Games
