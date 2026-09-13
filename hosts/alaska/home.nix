@@ -1,8 +1,4 @@
 { pkgs, ... }:
-let
-  fontFamily = "JetBrainsMono Nerd Font";
-  fontFamilySize = 10.0;
-in
 {
   home = {
     username = "ptarmigan";
@@ -74,8 +70,8 @@ in
         };
         
         font = {
-          normal.family = fontFamily;
-          size = fontFamilySize;
+          normal.family = "JetBrainsMono Nerd";
+          size = 10.0;
         };
 
         colors = {
@@ -148,53 +144,6 @@ in
     };
   };
 
-  # i3 config
-  xsession = {
-    enable = true;
-
-    windowManager.i3 = {
-      enable = true;
-
-      config = {
-        modifier = "Mod4";
-        terminal = "alacritty";
-
-        fonts = {
-          names = [ fontFamily ];
-          size = fontFamilySize;
-          style = "Regular";
-        };
-
-        menu = "${pkgs.dmenu}/bin/dmenu_run -fn '${fontFamily}-${toString fontFamilySize}'";
-
-        window = {
-          border = 2;
-          titlebar = false;
-        };
-
-        floating = {
-          border = 2;
-          titlebar = false;
-        };
-
-        bars = [
-          {
-            position = "top";
-      
-            fonts = {
-              names = [ fontFamily ];
-              size = fontFamilySize;
-              style = "Regular";
-            };
-
-            statusCommand = "${pkgs.i3status}/bin/i3status";
-            trayOutput = "primary";
-          }
-        ];
-      };
-    };
-  };
-
   services = {
     # Home Manager cleanup
     home-manager.autoExpire = {
@@ -203,43 +152,5 @@ in
       timestamp = "-7 days";
       store.cleanup = true;
     };
-
-    # Screen locking service
-    screen-locker = {
-      enable = true;
-      lockCmd = "${pkgs.i3lock}/bin/i3lock --nofork -c 000000";
-      inactiveInterval = 10;
-    };
-
-    # Notifications service
-    dunst = {
-      enable = true;
-      settings.global.font = "${fontFamily} ${toString fontFamilySize}";
-    };
-
-    # Compositor
-    picom.enable = true;
-    # Drive management service
-    udiskie.enable = true;
-    # PulseAudio/PipeWire applet
-    pasystray.enable = true;
-  };
-
-  # Polkit service
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    Unit = {
-      Description = "Polkit authentication agent";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-
-    Install.WantedBy = ["graphical-session.target" ];
   };
 }

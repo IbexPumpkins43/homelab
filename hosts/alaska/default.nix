@@ -37,14 +37,9 @@
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
 
-  # X11, Window manager, and display manager
-  services.xserver = {
-    enable = true;
-    xkb.layout = "gb";
-    windowManager.i3.enable = true;
-  };
-
-  services.displayManager.ly.enable = true;
+  # KDE Plasma
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
 
   # Fonts
   fonts = {
