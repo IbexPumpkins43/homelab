@@ -8,10 +8,8 @@
       # Utilities
       bat
       eza
-      feh
       fooyin
       fzf
-      pavucontrol
       qbittorrent
       ripgrep
       tree
@@ -70,7 +68,7 @@
         };
         
         font = {
-          normal.family = "JetBrainsMono Nerd";
+          normal.family = "JetBrainsMono Nerd Font";
           size = 10.0;
         };
 

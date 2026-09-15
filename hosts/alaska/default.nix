@@ -13,7 +13,7 @@
   networking = {
     hostName = "alaska";
     networkmanager.enable = true;
-    firewall.enable = true;
+    firewall.enable = false;
   };
 
   # Mullvad VPN
@@ -40,6 +40,17 @@
   # KDE Plasma
   services.desktopManager.plasma6.enable = true;
   services.displayManager.plasma-login-manager.enable = true;
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    elisa
+  ];
+
+  environment.systemPackages = with pkgs; [
+    kdePackages.oxygen
+    kdePackages.oxygen-icons
+  ];
 
   # Fonts
   fonts = {
