@@ -33,6 +33,7 @@
       
       # C# development
       dotnetCorePackages.sdk_10_0
+      csharp-ls
 
       # Rust development
       rustc
