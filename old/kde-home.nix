@@ -56,6 +56,54 @@
   };
 
   programs = {
+    # Alacritty config
+    alacritty = {
+      enable = true;
+
+      settings = {
+        terminal.shell = {
+          program = "${pkgs.tmux}/bin/tmux";
+          args = [
+            "new-session"
+          ];
+        };
+        
+        font = {
+          normal.family = "JetBrainsMono Nerd Font";
+          size = 10.0;
+        };
+
+        colors = {
+          primary = {
+            background = "#000000";
+            foreground = "#aaaaaa";
+          };
+
+          normal = {
+            black = "#000000";
+            red = "#aa0000";
+            green = "#00aa00";
+            yellow = "#aa5500";
+            blue = "#0000aa";
+            magenta = "#aa00aa";
+            cyan = "#00aaaa";
+            white = "#aaaaaa";
+          };
+
+          bright = {
+            black = "#555555";
+            red = "#ff5555";
+            green = "#55ff55";
+            yellow = "#ffff55";
+            blue = "#5555ff";
+            magenta = "#ff55ff";
+            cyan = "#55ffff";
+            white = "#ffffff";
+          };
+        };
+      };
+    };
+
     # Fish config
     fish = {
       enable = true;
@@ -82,7 +130,6 @@
       };
     };
 
-    # Librewolf
     librewolf.enable = true;
 
     # Tmux config
@@ -96,33 +143,13 @@
     };
   };
 
-  # GTK config
-  gtk = {
-    enable = true;
-    
-    gtk3 = {
-      theme = {
-        name = "adw-gtk3-dark";
-        package = pkgs.adw-gtk3;
-      };
-    };
-
-    colorScheme = "dark";
-  };
-
-  # GNOME config
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
   services = {
     # Home Manager cleanup
     home-manager.autoExpire = {
       enable = true;
       frequency = "weekly";
       timestamp = "-7 days";
+      store.cleanup = true;
     };
   };
 }

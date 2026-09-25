@@ -13,7 +13,7 @@
   networking = {
     hostName = "alaska";
     networkmanager.enable = true;
-    firewall.enable = true;
+    firewall.enable = false;
   };
 
   # Mullvad VPN
@@ -37,14 +37,19 @@
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
 
-  # GNOME
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.gnome.core-apps.enable = true;
+  # KDE Plasma
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-bluetooth
-    gnome-tour
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    elisa
+  ];
+
+  environment.systemPackages = with pkgs; [
+    kdePackages.oxygen
+    kdePackages.oxygen-icons
   ];
 
   # Fonts
@@ -55,9 +60,19 @@
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
     ];
+
+    fontconfig.useEmbeddedBitmaps = true;
   };
 
+  # Screen locking
+  security.pam.services.i3lock = { };
+
+  # Polkit
+  security.polkit.enable = true;
+
   # Audio
+  security.rtkit.enable = true;
+  
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -72,11 +87,16 @@
     openFirewall = true;
   };
 
-  # Bluetooth
-  hardware.bluetooth.enable = false;
+  # File manager and removable media support
+  services.gvfs.enable = true;
 
   # System packages that have integration
   programs.steam.enable = true;
+
+  programs.nm-applet = {
+    enable = true;
+    indicator = false;
+  };
 
   # User
   users.users.ptarmigan = {
