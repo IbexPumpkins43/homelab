@@ -99,7 +99,9 @@
   # GTK config
   gtk = {
     enable = true;
-    
+  
+    gtk2.enable = false;
+
     gtk3 = {
       theme = {
         name = "adw-gtk3-dark";
