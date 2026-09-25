@@ -5,17 +5,20 @@
     homeDirectory = "/home/ptarmigan";  
    
     packages = with pkgs; [
+      # General programs
+      amberol
+      fragments
+      mpv
+      vscodium.fhs
+
       # Utilities
       bat
       eza
-      fooyin
       fzf
-      mpv
-      qbittorrent
+      rar
       ripgrep
       tree
       unzip
-      vscodium.fhs
       zip
 
       # Games
