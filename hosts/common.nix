@@ -49,5 +49,8 @@
   # Enable the fish shell
   programs.fish.enable = true;
 
+  # Enable nix-ld to fix some programs
+  programs.nix-ld.enable = true;
+
   system.stateVersion = "26.05";
 }

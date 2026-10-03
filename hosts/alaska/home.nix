@@ -10,6 +10,17 @@
       fragments
       mpv
       vscodium.fhs
+      obs-studio
+
+      # IDEs
+      jetbrains.clion
+      jetbrains.idea
+      jetbrains.rider
+      jetbrains.rust-rover
+      jetbrains.pycharm
+
+      # Experiments
+      llama-cpp-vulkan
 
       # Utilities
       bat
@@ -36,23 +47,21 @@
       
       # C# development
       dotnetCorePackages.sdk_10_0
-      csharp-ls
+
+      # Java development
+      jdk25
+      maven
+      gradle
 
       # Rust development
       rustc
       cargo
       clippy
       rustfmt
-      rust-analyzer
 
       # Python development
       python3
       ruff
-      pyrefly
-
-      # Zig development
-      zig
-      zls
     ];
 
     stateVersion = "26.05";
