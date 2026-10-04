@@ -91,14 +91,17 @@
       };
     };
 
-    # GNOME config
+    # GNOME extensions
     gnome-shell = {
       enable = true;
 
       extensions = with pkgs.gnomeExtensions; [
-        {  package = desktop-icons-ng-ding; }
-        {  package = appindicator; }
-        {  package = accent-directories; }
+        { package = desktop-icons-ng-ding; }
+        { package = appindicator; }
+        { package = accent-directories; }
+        { package = tint-my-gnome; }
+        { package = tinted-shell; }
+        { package = system-monitor; }
       ];
     };
 
@@ -119,6 +122,12 @@
       baseIndex = 1;
       escapeTime = 0;
       historyLimit = 10000;
+    };
+
+    # direnv config
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 
@@ -144,13 +153,11 @@
       color-scheme = "prefer-dark";
     };
   };
-
-  services = {
-    # Home Manager cleanup
-    home-manager.autoExpire = {
-      enable = true;
-      frequency = "weekly";
-      timestamp = "-7 days";
-    };
+  
+  # Home Manager cleanup
+  services.home-manager.autoExpire = {
+    enable = true;
+    frequency = "weekly";
+    timestamp = "-7 days";
   };
 }
