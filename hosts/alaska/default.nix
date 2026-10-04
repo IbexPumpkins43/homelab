@@ -43,6 +43,10 @@
   services.gnome.core-apps.enable = true;
   services.gnome.gnome-browser-connector.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    gjs
+  ];
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-bluetooth
     gnome-tour
