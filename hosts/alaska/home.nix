@@ -94,6 +94,17 @@
       };
     };
 
+    # GNOME config
+    gnome-shell = {
+      enable = true;
+
+      extensions = with pkgs.gnomeExtensions; [
+        {  package = desktop-icons-ng-ding; }
+        {  package = appindicator; }
+        {  package = accent-directories; }
+      ];
+    };
+
     # Librewolf
     librewolf = {
       enable = true;
