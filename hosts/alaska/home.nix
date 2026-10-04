@@ -19,9 +19,6 @@
       jetbrains.rust-rover
       jetbrains.pycharm
 
-      # Experiments
-      llama-cpp-vulkan
-
       # Utilities
       bat
       eza
