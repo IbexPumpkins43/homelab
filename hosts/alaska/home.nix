@@ -95,7 +95,13 @@
     };
 
     # Librewolf
-    librewolf.enable = true;
+    librewolf = {
+      enable = true;
+    
+      nativeMessagingHosts = with pkgs; [
+        gnome-browser-connector
+      ];
+    };
 
     # Tmux config
     tmux = {
