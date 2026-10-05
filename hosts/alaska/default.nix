@@ -83,6 +83,19 @@
   # System packages that have integration
   programs.steam.enable = true;
 
+  # Virtualisation
+  virtualisation.libvirtd = {
+    enable = true;
+
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = false;
+      swtpm.enable = true;
+    };
+  };
+
+  programs.virt-manager.enable = true;
+
   # User
   users.users.ptarmigan = {
     isNormalUser = true;
@@ -92,6 +105,7 @@
       "lpadmin"
       "networkmanager"
       "wheel"
+      "libvirtd"
     ];
   };
 
