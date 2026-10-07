@@ -90,7 +90,10 @@
     qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = false;
-      swtpm.enable = true;
+      
+      vhostUserPackages = with pkgs; [
+        virtiofsd
+      ];
     };
   };
 

@@ -22,6 +22,7 @@
       # Utilities
       bat
       eza
+      freerdp
       fzf
       rar
       ripgrep
@@ -59,6 +60,9 @@
       # Python development
       python3
       ruff
+
+      # Crystal development
+      crystal
     ];
 
     stateVersion = "26.05";
