@@ -106,6 +106,7 @@
         { package = tint-my-gnome; }
         { package = tinted-shell; }
         { package = system-monitor; }
+        { package = o-tiling; }
       ];
     };
 
