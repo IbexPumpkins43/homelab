@@ -11,6 +11,7 @@
       mpv
       vscodium.fhs
       obs-studio
+      ptyxis
 
       # IDEs
       jetbrains.clion
