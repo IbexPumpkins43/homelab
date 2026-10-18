@@ -41,6 +41,15 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.plasma-login-manager.enable = true;
 
+  # Fix Baloo file indexer crash
+  # https://bugs.kde.org/show_bug.cgi?id=524392#c35
+  systemd.user.services.kde-baloo = {
+    overrideStrategy = "asDropin";
+
+    serviceConfig.Environment = "QT_QPA_PLATFORM=offscreen";
+  };
+
+
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
     elisa
