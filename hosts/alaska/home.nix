@@ -6,12 +6,10 @@
    
     packages = with pkgs; [
       # General programs
-      amberol
-      fragments
       mpv
       vscodium.fhs
       obs-studio
-      ptyxis
+      qbittorrent
 
       # IDEs
       jetbrains.clion
@@ -19,6 +17,7 @@
       jetbrains.rider
       jetbrains.rust-rover
       jetbrains.pycharm
+      qtcreator
 
       # Utilities
       bat
@@ -48,7 +47,7 @@
       dotnetCorePackages.sdk_10_0
 
       # Java development
-      jdk25
+      jdk21
       maven
       gradle
 
@@ -96,29 +95,8 @@
       };
     };
 
-    # GNOME extensions
-    gnome-shell = {
-      enable = true;
-
-      extensions = with pkgs.gnomeExtensions; [
-        { package = desktop-icons-ng-ding; }
-        { package = appindicator; }
-        { package = accent-directories; }
-        { package = tint-my-gnome; }
-        { package = tinted-shell; }
-        { package = system-monitor; }
-        { package = o-tiling; }
-      ];
-    };
-
     # Librewolf
-    librewolf = {
-      enable = true;
-    
-      nativeMessagingHosts = with pkgs; [
-        gnome-browser-connector
-      ];
-    };
+    librewolf.enable = true;
 
     # Tmux config
     tmux = {
@@ -137,29 +115,6 @@
     };
   };
 
-  # GTK config
-  gtk = {
-    enable = true;
-  
-    gtk2.enable = false;
-
-    gtk3 = {
-      theme = {
-        name = "adw-gtk3-dark";
-        package = pkgs.adw-gtk3;
-      };
-    };
-
-    colorScheme = "dark";
-  };
-
-  # GNOME config
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-  
   # Home Manager cleanup
   services.home-manager.autoExpire = {
     enable = true;

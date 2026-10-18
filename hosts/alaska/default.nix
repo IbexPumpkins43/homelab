@@ -37,19 +37,18 @@
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
 
-  # GNOME
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.gnome.core-apps.enable = true;
-  services.gnome.gnome-browser-connector.enable = true;
+  # KDE Plasma
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.plasma-login-manager.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    gjs
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    elisa
   ];
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-bluetooth
-    gnome-tour
+  environment.systemPackages = with pkgs; [
+    kdePackages.oxygen
+    kdePackages.oxygen-icons
   ];
 
   # Fonts
@@ -59,6 +58,8 @@
       nerd-fonts.dejavu-sans-mono
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
+      terminus-font-ttf
+      terminus-font
     ];
   };
 
