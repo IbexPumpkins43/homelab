@@ -58,8 +58,8 @@
       nerd-fonts.dejavu-sans-mono
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
-      terminus-font-ttf
-      terminus-font
+      terminus_font
+      terminus_font_ttf
     ];
   };
 
